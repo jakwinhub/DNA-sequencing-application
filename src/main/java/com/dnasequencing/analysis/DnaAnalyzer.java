@@ -4,7 +4,6 @@ import main.java.com.dnasequencing.utils.DnaUtils;
 import main.java.com.dnasequencing.utils.FileUtils;
 
 import java.io.IOException;
-import java.nio.file.Files;
 
 /**
  * Main class in which the coordination of the DNA analysis should take place.
@@ -27,12 +26,20 @@ public class DnaAnalyzer {
     }
 
 
-    public double calculateCGContent() {
-        return ContentCalculator.calculateCGContent(dnaSequence);
+    public double calculateCContent() {
+        return ContentCalculator.calculateCContent(dnaSequence);
     }
 
-    public double calculateATContent() {
-        return ContentCalculator.calculateATContent(dnaSequence);
+    public double calculateGContent() {
+        return ContentCalculator.calculateGContent(dnaSequence);
+    }
+
+    public double calculateAContent() {
+        return ContentCalculator.calculateAContent(dnaSequence);
+    }
+
+    public double calculateTContent() {
+        return ContentCalculator.calculateTContent(dnaSequence);
     }
 
     public String findCodonPosition(String codon) {

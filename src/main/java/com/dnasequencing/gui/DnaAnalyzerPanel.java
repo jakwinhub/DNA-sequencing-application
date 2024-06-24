@@ -8,7 +8,6 @@ import java.io.File;
 import java.io.IOException;
 
 import main.java.com.dnasequencing.analysis.*;
-import main.java.com.dnasequencing.utils.DnaUtils;
 
 /**
  * GUI class for the application.
@@ -64,12 +63,17 @@ public class DnaAnalyzerPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (analyzer != null) {
-            double cgContent = analyzer.calculateCGContent();
-            double atContent = analyzer.calculateATContent();
+
+            double cContent = analyzer.calculateCContent();
+            double gContent = analyzer.calculateGContent();
+            double aContent = analyzer.calculateAContent();
+            double tContent = analyzer.calculateTContent();
             String codonPosition = analyzer.findCodonPosition("ATG");
 
-            outputArea.setText("CG content: " + cgContent + "%\n");
-            outputArea.append("AT Content: " + atContent + "%\n");
+            outputArea.setText("CG content: " + cContent + "%\n");
+            outputArea.setText("CG content: " + gContent + "%\n");
+            outputArea.setText("CG content: " + aContent + "%\n");
+            outputArea.append("AT Content: " + tContent + "%\n");
             outputArea.append("Codon position for 'ATG': " + codonPosition + "\n");
         }
     }

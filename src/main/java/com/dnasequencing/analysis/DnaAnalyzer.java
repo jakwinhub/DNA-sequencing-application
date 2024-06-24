@@ -25,7 +25,6 @@ public class DnaAnalyzer {
         }
     }
 
-
     public double calculateCContent() {
         return ContentCalculator.calculateCContent(dnaSequence);
     }
@@ -45,5 +44,11 @@ public class DnaAnalyzer {
     public String findCodonPosition(String codon) {
         return SequenceFinder.findCodonPosition(dnaSequence, codon);
     }
+
+    public String transcribeToRna(){
+        return DnaTranscription.transcribeToRna(dnaSequence);
+    }
+
+    //TODO: Implement Method to Translate from RNA to Protein.
 
 }

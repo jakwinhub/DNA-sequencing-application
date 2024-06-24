@@ -8,7 +8,7 @@ import java.util.Map;
  * Guanine into Cytosine and Cytosine into Guanine.
  */
 
-public class DnaTranscription {
+public class DnaTranscriber {
     private static final Map<String, String> rnaMap = new HashMap<>();
 
     static {
@@ -19,17 +19,11 @@ public class DnaTranscription {
     }
 
     public static String transcribeToRna(String dna) {
-        int count = 0;
         StringBuilder rnaSequence = new StringBuilder();
 
         for (int i = 0; i < dna.length(); i++) {
             String codon = dna.substring(i, i + 1);
             rnaSequence.append(rnaMap.get(codon));
-            count ++;
-            if (count == 3) {
-                rnaSequence.append(" ");
-                count = 0;
-            }
         }
         return rnaSequence.toString().trim();
     }

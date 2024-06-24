@@ -7,7 +7,7 @@ import java.util.Map;
  * Class in which the translation of DNA is realized.
  */
 
-public class DnaTranslation {
+public class RnaTranslator {
     private static final Map<String, String> codonMap = new HashMap<>();
 
     static {
@@ -45,10 +45,10 @@ public class DnaTranslation {
         codonMap.put("GGA", "Glycine"); codonMap.put("GGG", "Glycine");
     }
 
-    public static String translateToProtein(String sequence) {
+    public static String translateToProtein(String rnaSequence) {
         StringBuilder protein = new StringBuilder();
-        for (int i = 0; i < sequence.length() - 2; i += 3) {
-            String codon = sequence.substring(i, i + 3);
+        for (int i = 0; i < rnaSequence.length() - 2; i += 3) {
+            String codon = rnaSequence.substring(i, i + 3);
             protein.append(codonMap.getOrDefault(codon, "Unknown")).append(" ");
         }
         return protein.toString().trim();

@@ -70,7 +70,7 @@ public class DnaAnalyzerPanel extends JPanel implements ActionListener {
             double tContent = analyzer.calculateTContent();
             String codonPosition = analyzer.findCodonPosition("ATG");
             String rna = analyzer.transcribeToRna();
-            //String protein = analyzer.translateToProtein();
+            String protein = analyzer.translateToProtein();
 
             outputArea.setText("CG content: " + cContent + "%\n");
             outputArea.append("CG content: " + gContent + "%\n");
@@ -81,7 +81,7 @@ public class DnaAnalyzerPanel extends JPanel implements ActionListener {
 
             outputArea.append("RNA sequence: " + rna + "\n");
 
-            //outputArea.append("Translated Protein Sequence: " + protein + "\n");
+            outputArea.append("Translated Protein Sequence: " + protein + "\n");
 
         }
     }

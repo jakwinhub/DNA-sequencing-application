@@ -11,9 +11,11 @@ import java.io.IOException;
 
 public class DnaAnalyzer {
     private String dnaSequence;
+    private String rnaSequence;
 
     public DnaAnalyzer(String dnaSequence) {
         this.dnaSequence = dnaSequence;
+        this.rnaSequence = DnaTranscriber.transcribeToRna(dnaSequence);
     }
 
     public static DnaAnalyzer fromFile(String filePath) throws IOException {
@@ -46,9 +48,14 @@ public class DnaAnalyzer {
     }
 
     public String transcribeToRna(){
-        return DnaTranscription.transcribeToRna(dnaSequence);
+        return DnaTranscriber.transcribeToRna(dnaSequence);
     }
 
-    //TODO: Implement Method to Translate from RNA to Protein.
+    public String getRnaSequence() {
+        return rnaSequence;
+    }
 
+    public String translateToProtein() {
+        return RnaTranslator.translateToProtein(rnaSequence);
+    }
 }

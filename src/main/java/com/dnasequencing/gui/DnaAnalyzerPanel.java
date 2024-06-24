@@ -72,16 +72,16 @@ public class DnaAnalyzerPanel extends JPanel implements ActionListener {
             String rna = analyzer.transcribeToRna();
             String protein = analyzer.translateToProtein();
 
-            outputArea.setText("CG content: " + cContent + "%\n");
-            outputArea.append("CG content: " + gContent + "%\n");
-            outputArea.append("CG content: " + aContent + "%\n");
-            outputArea.append("AT Content: " + tContent + "%\n");
+            outputArea.setText(" C content: " + cContent + "%\n");
+            outputArea.append(" G content: " + gContent + "%\n");
+            outputArea.append(" A content: " + aContent + "%\n");
+            outputArea.append(" T Content: " + tContent + "%\n");
 
-            outputArea.append("Codon position for 'ATG': " + codonPosition + "\n");
+            outputArea.append(" Codon position for 'ATG': " + codonPosition + "\n");
 
-            outputArea.append("RNA sequence: " + rna + "\n");
+            outputArea.append(" RNA sequence: " + rna + "\n");
 
-            outputArea.append("Translated Protein Sequence: " + protein + "\n");
+            outputArea.append(" Translated Protein Sequence: " + protein + "\n");
 
         }
     }

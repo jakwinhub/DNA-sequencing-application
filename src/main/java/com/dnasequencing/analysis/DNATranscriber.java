@@ -8,7 +8,7 @@ import java.util.Map;
  * Guanine into Cytosine and Cytosine into Guanine.
  */
 
-public class DnaTranscriber {
+public class DNATranscriber {
     private static final Map<String, String> rnaMap = new HashMap<>();
 
     static {

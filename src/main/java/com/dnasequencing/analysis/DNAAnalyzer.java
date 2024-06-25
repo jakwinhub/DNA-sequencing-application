@@ -1,6 +1,6 @@
 package main.java.com.dnasequencing.analysis;
 
-import main.java.com.dnasequencing.utils.DnaUtils;
+import main.java.com.dnasequencing.utils.DNAUtils;
 import main.java.com.dnasequencing.utils.FileUtils;
 
 import java.io.IOException;
@@ -9,19 +9,19 @@ import java.io.IOException;
  * Main class in which the coordination of the DNA analysis should take place.
  */
 
-public class DnaAnalyzer {
-    private String dnaSequence;
+public class DNAAnalyzer {
+    private final String dnaSequence;
     private String rnaSequence;
 
-    public DnaAnalyzer(String dnaSequence) {
+    public DNAAnalyzer(String dnaSequence) {
         this.dnaSequence = dnaSequence;
-        this.rnaSequence = DnaTranscriber.transcribeToRna(dnaSequence);
+        this.rnaSequence = DNATranscriber.transcribeToRna(dnaSequence);
     }
 
-    public static DnaAnalyzer fromFile(String filePath) throws IOException {
+    public static DNAAnalyzer fromFile(String filePath) throws IOException {
         String sequence = FileUtils.readFileAsString(filePath);
-        if (DnaUtils.isValidDNA(sequence)) {
-            return new DnaAnalyzer(sequence);
+        if (DNAUtils.isValidDNA(sequence)) {
+            return new DNAAnalyzer(sequence);
         } else {
             throw new IllegalArgumentException("Invalid DNA sequence your selected file! ");
         }
@@ -48,7 +48,7 @@ public class DnaAnalyzer {
     }
 
     public String transcribeToRna(){
-        return DnaTranscriber.transcribeToRna(dnaSequence);
+        return DNATranscriber.transcribeToRna(dnaSequence);
     }
 
     public String getRnaSequence() {
@@ -56,6 +56,6 @@ public class DnaAnalyzer {
     }
 
     public String translateToProtein() {
-        return RnaTranslator.translateToProtein(rnaSequence);
+        return RNATranslator.translateToProtein(rnaSequence);
     }
 }

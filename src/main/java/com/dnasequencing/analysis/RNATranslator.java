@@ -7,7 +7,7 @@ import java.util.Map;
  * Class in which the translation of DNA is realized.
  */
 
-public class RnaTranslator {
+public class RNATranslator {
     private static final Map<String, String> codonMap = new HashMap<>();
 
     static {

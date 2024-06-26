@@ -1,5 +1,7 @@
 package main.java.com.dnasequencing.gui;
 
+import main.java.com.dnasequencing.Application;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,9 +15,9 @@ public class DNAAnalyzerPanel extends JPanel implements ActionListener {
     private JTextArea outputArea;
     private JButton loadFileButton;
     private JButton analyzeButton;
-    private main.java.com.dnasequencing.Application mainApp;
+    private Application mainApp;
 
-    public DNAAnalyzerPanel(main.java.com.dnasequencing.Application mainApp) {
+    public DNAAnalyzerPanel(Application mainApp) {
         this.mainApp = mainApp;
         this.setLayout(new BorderLayout());
 
@@ -40,9 +42,12 @@ public class DNAAnalyzerPanel extends JPanel implements ActionListener {
         this.add(new JScrollPane(outputArea), BorderLayout.CENTER);
     }
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Analysis logic here, but this part is delegated to the Main class now
-        // The outputArea can be updated if needed
+        if(analyzeButton.getModel().isEnabled()) {
+            outputArea.setText("File Analysis Started ... ");
+
+        }
     }
 }

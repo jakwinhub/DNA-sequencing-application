@@ -20,6 +20,10 @@ public class Application {
         SwingUtilities.invokeLater(() -> new Application().createAndShowGUI());
     }
 
+    /**
+     *  Method, which is responsible for the creation and subsequent display of the GUI.
+     *  All panels created and formatted in external classes are called up in this method.
+     */
     private void createAndShowGUI() {
         JFrame frame = new JFrame("DNA Analyzer");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -40,12 +44,19 @@ public class Application {
         frame.setVisible(true);
     }
 
+
+    /**
+     * Execute the loadFile method, which references FileLoader and loads the data into a string.
+     */
     public void loadFile() {
         FileLoader fileLoader = new FileLoader();
         analyzer = fileLoader.loadFile();
         updateStatisticsPanels();
     }
 
+    /**
+     * Method which is responsible for updating the statisticsPanel
+     */
     private void updateStatisticsPanels() {
         for (Component component : tabbedPane.getComponents()) {
             if (component instanceof StatisticsPanel) {

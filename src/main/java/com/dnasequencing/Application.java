@@ -28,12 +28,13 @@ public class Application {
     private void createAndShowGUI() {
         JFrame frame = new JFrame("DNA Analyzer");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 600);
+        frame.setSize(1200, 800);
         frame.setLayout(new BorderLayout());
 
         tabbedPane = new JTabbedPane();
 
         DNAAnalyzerPanel analyzerPanel = new DNAAnalyzerPanel(this);
+        tabbedPane.addTab("Welcome", new WelcomePanel());
         tabbedPane.addTab("Analyzer", analyzerPanel);
         tabbedPane.addTab("DNA Statistics", new DNAStatisticsPanel());
         tabbedPane.addTab("RNA Statistics", new RNAStatisticsPanel());

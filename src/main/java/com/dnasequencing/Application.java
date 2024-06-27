@@ -33,9 +33,9 @@ public class Application {
 
         tabbedPane = new JTabbedPane();
 
-        DNAAnalyzerPanel analyzerPanel = new DNAAnalyzerPanel(this);
+
         tabbedPane.addTab("Welcome", new WelcomePanel());
-        tabbedPane.addTab("Analyzer", analyzerPanel);
+        tabbedPane.addTab("Analyzer", new DNAAnalyzerPanel(this));
         tabbedPane.addTab("DNA Statistics", new DNAStatisticsPanel());
         tabbedPane.addTab("RNA Statistics", new RNAStatisticsPanel());
         tabbedPane.addTab("Protein Statistics", new ProteinStatisticsPanel());

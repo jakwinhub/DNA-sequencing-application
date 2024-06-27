@@ -44,10 +44,6 @@ public class DNAAnalyzerPanel extends JPanel implements ActionListener {
 
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        if(analyzeButton.getModel().isEnabled()) {
-            outputArea.setText("File Analysis Started ... ");
-
-        }
+    public void actionPerformed(ActionEvent e)  {
     }
 }

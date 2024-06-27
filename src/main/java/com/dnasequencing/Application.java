@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import main.java.com.dnasequencing.analysis.DNAAnalyzer;
 import main.java.com.dnasequencing.gui.*;
+import main.java.com.dnasequencing.utils.FileLoader;
 
 import java.awt.*;
 

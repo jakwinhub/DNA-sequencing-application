@@ -10,7 +10,7 @@ import java.io.IOException;
  */
 
 public class DNAAnalyzer {
-    private final String dnaSequence;
+    private String dnaSequence;
     private String rnaSequence;
 
     public DNAAnalyzer(String dnaSequence) {
@@ -47,7 +47,7 @@ public class DNAAnalyzer {
         return SequenceFinder.findCodonPosition(dnaSequence, codon);
     }
 
-    public String transcribeToRna(){
+    public String transcribeToRna() {
         return DNATranscriber.transcribeToRna(dnaSequence);
     }
 

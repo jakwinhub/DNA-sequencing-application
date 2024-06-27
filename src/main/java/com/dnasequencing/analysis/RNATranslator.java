@@ -53,4 +53,8 @@ public class RNATranslator {
         }
         return protein.toString().trim();
     }
+
+    public static Map<String, String> getCodonMap() {
+        return codonMap;
+    }
 }

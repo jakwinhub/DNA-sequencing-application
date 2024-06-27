@@ -1,4 +1,4 @@
-package main.java.com.dnasequencing.gui;
+package main.java.com.dnasequencing.utils;
 
 
 import main.java.com.dnasequencing.analysis.DNAAnalyzer;

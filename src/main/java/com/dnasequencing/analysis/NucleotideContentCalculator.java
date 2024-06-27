@@ -5,7 +5,7 @@ package main.java.com.dnasequencing.analysis;
  * Addition: Proportion of Adenine and Thymine is also calculated, following the same schema as CG-Calculation.
  */
 
-public class ContentCalculator {
+public class NucleotideContentCalculator {
 
     public static double calculateCContent(String sequence) {
         int cCount = 0;

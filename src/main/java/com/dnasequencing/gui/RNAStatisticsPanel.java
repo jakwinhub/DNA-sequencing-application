@@ -6,20 +6,26 @@ import javax.swing.*;
 import java.awt.*;
 
 public class RNAStatisticsPanel extends JPanel implements StatisticsPanel {
-    private final JTextArea textArea;
+    private final JTextArea rnaStatisticsTextArea;
 
     public RNAStatisticsPanel() {
-        textArea = new JTextArea();
-        textArea.setEditable(false);
+        rnaStatisticsTextArea = new JTextArea();
+        rnaStatisticsTextArea.setEditable(false);
         setLayout(new BorderLayout());
-        add(new JScrollPane(textArea), BorderLayout.CENTER);
+        add(new JScrollPane(rnaStatisticsTextArea), BorderLayout.CENTER);
     }
 
-    @Override
     public void updateData(DNAAnalyzer analyzer) {
         if (analyzer != null) {
-            String rnaSequence = analyzer.transcribeToRna();
-            textArea.setText("RNA Sequence: " + rnaSequence + "\n");
+            double cContent = analyzer.calculateCContent();
+            double gContent = analyzer.calculateGContent();
+            double aContent = analyzer.calculateAContent();
+            double tContent = analyzer.calculateTContent();
+
+            rnaStatisticsTextArea.setText("G content: " + cContent + "%\n");
+            rnaStatisticsTextArea.append("C content: " + gContent + "%\n");
+            rnaStatisticsTextArea.append("T content: " + aContent + "%\n");
+            rnaStatisticsTextArea.append("U content: " + tContent + "%\n");
         }
     }
 }

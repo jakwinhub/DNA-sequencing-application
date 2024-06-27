@@ -28,19 +28,19 @@ public class DNAAnalyzer {
     }
 
     public double calculateCContent() {
-        return ContentCalculator.calculateCContent(dnaSequence);
+        return NucleotideContentCalculator.calculateCContent(dnaSequence);
     }
 
     public double calculateGContent() {
-        return ContentCalculator.calculateGContent(dnaSequence);
+        return NucleotideContentCalculator.calculateGContent(dnaSequence);
     }
 
     public double calculateAContent() {
-        return ContentCalculator.calculateAContent(dnaSequence);
+        return NucleotideContentCalculator.calculateAContent(dnaSequence);
     }
 
     public double calculateTContent() {
-        return ContentCalculator.calculateTContent(dnaSequence);
+        return NucleotideContentCalculator.calculateTContent(dnaSequence);
     }
 
     public String findCodonPosition(String codon) {

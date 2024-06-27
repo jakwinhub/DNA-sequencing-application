@@ -39,6 +39,9 @@ public class Application {
         tabbedPane.addTab("Protein Statistics", new ProteinStatisticsPanel());
         tabbedPane.addTab("Codon Finder", new CodonFinderPanel());
         tabbedPane.addTab("RNA Viewer", new RNAViewerPanel());
+        tabbedPane.addTab("Protein Viewer", new ProteinViewerPanel());
+
+
 
         frame.add(tabbedPane, BorderLayout.CENTER);
         frame.setVisible(true);

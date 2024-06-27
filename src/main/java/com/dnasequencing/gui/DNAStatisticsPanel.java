@@ -6,13 +6,13 @@ import javax.swing.*;
 import java.awt.*;
 
 public class DNAStatisticsPanel extends JPanel implements StatisticsPanel {
-    private final JTextArea textArea;
+    private final JTextArea dnaStatisticsTextArea;
 
     public DNAStatisticsPanel() {
-        textArea = new JTextArea();
-        textArea.setEditable(false);
+        dnaStatisticsTextArea = new JTextArea();
+        dnaStatisticsTextArea.setEditable(false);
         setLayout(new BorderLayout());
-        add(new JScrollPane(textArea), BorderLayout.CENTER);
+        add(new JScrollPane(dnaStatisticsTextArea), BorderLayout.CENTER);
     }
 
     @Override
@@ -23,10 +23,10 @@ public class DNAStatisticsPanel extends JPanel implements StatisticsPanel {
             double aContent = analyzer.calculateAContent();
             double tContent = analyzer.calculateTContent();
 
-            textArea.setText("C content: " + cContent + "%\n");
-            textArea.append("G content: " + gContent + "%\n");
-            textArea.append("A content: " + aContent + "%\n");
-            textArea.append("T content: " + tContent + "%\n");
+            dnaStatisticsTextArea.setText("C content: " + cContent + "%\n");
+            dnaStatisticsTextArea.append("G content: " + gContent + "%\n");
+            dnaStatisticsTextArea.append("A content: " + aContent + "%\n");
+            dnaStatisticsTextArea.append("T content: " + tContent + "%\n");
         }
     }
 }

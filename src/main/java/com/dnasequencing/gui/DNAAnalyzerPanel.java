@@ -24,15 +24,17 @@ public class DNAAnalyzerPanel extends JPanel implements ActionListener {
         outputArea = new JTextArea();
         outputArea.setEditable(false);
 
-        analyzeButton = new JButton("Start Analysis");
-        analyzeButton.addActionListener(this);
-        analyzeButton.setEnabled(false);
-
         loadFileButton = new JButton("Load File");
         loadFileButton.addActionListener(e -> {
             mainApp.loadFile();
             analyzeButton.setEnabled(true);
+            outputArea.setText(" File Loaded ... \n");
         });
+
+        analyzeButton = new JButton("Start Analysis");
+        analyzeButton.addActionListener(this);
+        analyzeButton.setEnabled(false);
+
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(loadFileButton);
@@ -44,6 +46,7 @@ public class DNAAnalyzerPanel extends JPanel implements ActionListener {
 
 
     @Override
-    public void actionPerformed(ActionEvent e)  {
+    public void actionPerformed(ActionEvent e) {
+
     }
 }

@@ -33,7 +33,10 @@ public class Application {
 
         tabbedPane = new JTabbedPane();
 
-
+        /**
+         * Call up of the individual Pages.
+         * Moving the order, would change the appearance of the GUI, but not the function of the Pages.
+         */
         tabbedPane.addTab("Welcome", new WelcomePanel());
         tabbedPane.addTab("Analyzer", new DNAAnalyzerPanel(this));
         tabbedPane.addTab("DNA Statistics", new DNAStatisticsPanel());

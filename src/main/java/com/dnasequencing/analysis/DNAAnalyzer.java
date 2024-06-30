@@ -51,10 +51,6 @@ public class DNAAnalyzer {
         return DNATranscriber.transcribeToRna(dnaSequence);
     }
 
-    public String getRnaSequence() {
-        return rnaSequence;
-    }
-
     public String translateToProtein() {
         return RNATranslator.translateToProtein(rnaSequence);
     }

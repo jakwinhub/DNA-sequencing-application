@@ -24,17 +24,16 @@ public class DNAAnalyzerPanel extends JPanel implements ActionListener {
         outputArea = new JTextArea();
         outputArea.setEditable(false);
 
-        loadFileButton = new JButton("Load File");
-        loadFileButton.addActionListener(e -> {
-            mainApp.loadFile();
-            analyzeButton.setEnabled(true);
-            outputArea.setText(" File Loaded ... \n");
-        });
-
         analyzeButton = new JButton("Start Analysis");
         analyzeButton.addActionListener(this);
         analyzeButton.setEnabled(false);
 
+        loadFileButton = new JButton("Load File");
+        loadFileButton.addActionListener(e -> {
+            mainApp.loadFile();
+            analyzeButton.setEnabled(true);
+            outputArea.setText("File loaded. Ready for analysis.");
+        });
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(loadFileButton);
@@ -44,9 +43,24 @@ public class DNAAnalyzerPanel extends JPanel implements ActionListener {
         this.add(new JScrollPane(outputArea), BorderLayout.CENTER);
     }
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if (e.getSource() == analyzeButton) {
+            outputArea.setText("File Analysis Started ... ");
+            new Thread(() -> {
+                try {
+                    Thread.sleep(3000);
+                    mainApp.updateStatisticsPanels();
+                    SwingUtilities.invokeLater(() -> outputArea.setText("Analysis Completed."));
+                } catch (InterruptedException interruptedException) {
+                    interruptedException.printStackTrace();
+                    SwingUtilities.invokeLater(() -> outputArea.setText("Analysis interrupted."));
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(this, "Error during analysis process.", "Error", JOptionPane.ERROR_MESSAGE));
+                    outputArea.setText("Analysis interrupted.");
+                }
+            }).start();
+        }
     }
 }

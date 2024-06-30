@@ -16,24 +16,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ProteinStatisticsPanel extends JPanel implements StatisticsPanel {
-    private DefaultCategoryDataset dataset;
+    private DefaultCategoryDataset proteinDataset;
     private JFreeChart chart;
     private ChartPanel chartPanel;
 
     public ProteinStatisticsPanel() {
         setLayout(new BorderLayout());
-        dataset = new DefaultCategoryDataset();
-        chart = createChart(dataset);
+        proteinDataset = new DefaultCategoryDataset();
+        chart = createChart(proteinDataset);
         chartPanel = new ChartPanel(chart);
         add(chartPanel, BorderLayout.CENTER);
     }
 
-    private JFreeChart createChart(DefaultCategoryDataset dataset) {
+    private JFreeChart createChart(DefaultCategoryDataset proteinDataset) {
         JFreeChart chart = ChartFactory.createBarChart(
                 "Protein Distribution",
                 "Protein",
                 "Proportion",
-                dataset
+                proteinDataset
         );
 
         CategoryPlot plot = (CategoryPlot) chart.getPlot();
@@ -67,11 +67,11 @@ public class ProteinStatisticsPanel extends JPanel implements StatisticsPanel {
             }
 
             // Clear the dataset and add the proportions
-            dataset.clear();
+            proteinDataset.clear();
             int total = proteins.length;
             for (Map.Entry<String, Integer> entry : counts.entrySet()) {
                 double proportion = (double) entry.getValue() / total;
-                dataset.addValue(proportion, "Proteins", entry.getKey());
+                proteinDataset.addValue(proportion, "Proteins", entry.getKey());
             }
         }
     }

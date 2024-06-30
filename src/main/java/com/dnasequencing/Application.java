@@ -9,8 +9,8 @@ import main.java.com.dnasequencing.utils.FileLoader;
 import java.awt.*;
 
 /**
- *  The main class that starts the program.
- *  Contains settings for panel (size and close-Operation).
+ * The main class that starts the program.
+ * Contains settings for panel (size and close-Operation).
  */
 
 public class Application {
@@ -22,8 +22,8 @@ public class Application {
     }
 
     /**
-     *  Method, which is responsible for the creation and subsequent display of the GUI.
-     *  All panels created and formatted in external classes are called up in this method.
+     * Method, which is responsible for the creation and subsequent display of the GUI.
+     * All panels created and formatted in external classes are called up in this method.
      */
     private void createAndShowGUI() {
         JFrame frame = new JFrame("DNA Analyzer");
@@ -33,19 +33,15 @@ public class Application {
 
         tabbedPane = new JTabbedPane();
 
-        /**
-         * Call up of the individual Pages.
-         * Moving the order, would change the appearance of the GUI, but not the function of the Pages.
-         */
-        tabbedPane.addTab("Welcome", new WelcomePanel());
+        // Call up of the individual Pages.
+        // Moving the order, would change the appearance of the GUI, but not the function of the Pages.
+        tabbedPane.addTab("Main Page", new WelcomePanel());
         tabbedPane.addTab("Analyzer", new DNAAnalyzerPanel(this));
-        tabbedPane.addTab("DNA Statistics", new DNAStatisticsPanel());
-        tabbedPane.addTab("RNA Statistics", new RNAStatisticsPanel());
-        tabbedPane.addTab("Protein Statistics", new ProteinStatisticsPanel());
-        tabbedPane.addTab("Codon Finder", new CodonFinderPanel());
+        tabbedPane.addTab("Nucleotide Statistcs", new NucleotideStatisticsPanel());
         tabbedPane.addTab("RNA Viewer", new RNAViewerPanel());
+        tabbedPane.addTab("Protein Statistics", new ProteinStatisticsPanel());
         tabbedPane.addTab("Protein Viewer", new ProteinViewerPanel());
-
+        tabbedPane.addTab("Codon Finder", new CodonFinderPanel());
 
 
         frame.add(tabbedPane, BorderLayout.CENTER);
@@ -53,19 +49,18 @@ public class Application {
     }
 
 
-    /**
+    /*
      * Execute the loadFile method, which references FileLoader and loads the data into a string.
      */
     public void loadFile() {
         FileLoader fileLoader = new FileLoader();
         analyzer = fileLoader.loadFile();
-        updateStatisticsPanels();
     }
 
-    /**
+    /*
      * Method which is responsible for updating the statisticsPanel
      */
-    private void updateStatisticsPanels() {
+    public void updateStatisticsPanels() {
         for (Component component : tabbedPane.getComponents()) {
             if (component instanceof StatisticsPanel) {
                 ((StatisticsPanel) component).updateData(analyzer);

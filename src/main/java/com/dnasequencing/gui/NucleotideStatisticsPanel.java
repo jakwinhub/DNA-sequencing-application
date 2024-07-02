@@ -11,7 +11,11 @@ public class NucleotideStatisticsPanel extends Panel implements StatisticsPanel 
     public NucleotideStatisticsPanel() {
         nucleotideStatisticsTextArea = new JTextArea();
         nucleotideStatisticsTextArea.setEditable(false);
+
+        JPanel nucleotideStatisticsPanel = new JPanel();
+
         setLayout(new BorderLayout());
+        add(nucleotideStatisticsPanel, BorderLayout.NORTH);
         add(new JScrollPane(nucleotideStatisticsTextArea), BorderLayout.CENTER);
     }
 
@@ -24,15 +28,15 @@ public class NucleotideStatisticsPanel extends Panel implements StatisticsPanel 
             double tContent = analyzer.calculateTContent();
 
             nucleotideStatisticsTextArea.setText("\n *Statistics for Nucleotides in DNA* \n");
-            nucleotideStatisticsTextArea.append("C content: " + cContent + "%\n");
-            nucleotideStatisticsTextArea.append("G content: " + gContent + "%\n");
-            nucleotideStatisticsTextArea.append("A content: " + aContent + "%\n");
-            nucleotideStatisticsTextArea.append("T content: " + tContent + "%\n");
+            nucleotideStatisticsTextArea.append(" C content: " + cContent + "%\n");
+            nucleotideStatisticsTextArea.append(" G content: " + gContent + "%\n");
+            nucleotideStatisticsTextArea.append(" A content: " + aContent + "%\n");
+            nucleotideStatisticsTextArea.append(" T content: " + tContent + "%\n");
             nucleotideStatisticsTextArea.append("\n *Statistics for Nucleotides in RNA* \n");
-            nucleotideStatisticsTextArea.append("T content: " + tContent + "%\n");
-            nucleotideStatisticsTextArea.append("T content: " + tContent + "%\n");
-            nucleotideStatisticsTextArea.append("T content: " + tContent + "%\n");
-            nucleotideStatisticsTextArea.append("T content: " + tContent + "%\n");
+            nucleotideStatisticsTextArea.append(" A content: " + tContent + "%\n");
+            nucleotideStatisticsTextArea.append(" U content: " + aContent + "%\n");
+            nucleotideStatisticsTextArea.append(" G content: " + cContent + "%\n");
+            nucleotideStatisticsTextArea.append(" C content: " + gContent + "%\n");
 
         }
     }

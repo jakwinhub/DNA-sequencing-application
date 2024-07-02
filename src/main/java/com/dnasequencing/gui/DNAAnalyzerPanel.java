@@ -35,6 +35,7 @@ public class DNAAnalyzerPanel extends JPanel implements ActionListener {
             outputArea.setText("File loaded. Ready for analysis.");
         });
 
+
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(loadFileButton);
         buttonPanel.add(analyzeButton);

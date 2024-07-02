@@ -11,7 +11,11 @@ public class ProteinViewerPanel extends JPanel implements StatisticsPanel {
     public ProteinViewerPanel() {
         proteinViewerTextArea = new JTextArea();
         proteinViewerTextArea.setEditable(false);
+
+        JPanel proteinViewerPanel = new JPanel(new BorderLayout());
+
         setLayout(new BorderLayout());
+        add(proteinViewerPanel, BorderLayout.NORTH);
         add(new JScrollPane(proteinViewerTextArea), BorderLayout.CENTER);
     }
 

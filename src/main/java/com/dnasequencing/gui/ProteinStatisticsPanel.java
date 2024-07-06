@@ -70,8 +70,8 @@ public class ProteinStatisticsPanel extends JPanel implements StatisticsPanel {
             proteinDataset.clear();
             int total = proteins.length;
             for (Map.Entry<String, Integer> entry : counts.entrySet()) {
-                double proportion = (double) entry.getValue() / total;
-                proteinDataset.addValue(proportion, "Proteins", entry.getKey());
+                double count = (double) entry.getValue();
+                proteinDataset.addValue(count, "Proteins", entry.getKey());
             }
         }
     }

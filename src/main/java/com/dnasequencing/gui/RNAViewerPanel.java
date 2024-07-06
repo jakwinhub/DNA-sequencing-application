@@ -31,8 +31,16 @@ public class RNAViewerPanel extends JPanel implements StatisticsPanel, ActionLis
     public void actionPerformed(ActionEvent e) {
         if (analyzer != null) {
             String rnaSequence = analyzer.transcribeToRna();
+            StringBuilder rnaSequenceBuilder = new StringBuilder("RNA Sequence: " + "\n");
 
-            rnaSequenceTextArea.setText("RNA Sequence: \n" + rnaSequence + "\n");
+            for (int i = 0; i < rnaSequence.length(); i += 3) {
+                rnaSequenceBuilder.append(rnaSequence, i, Math.min(i + 3, rnaSequence.length()));
+                if (i + 3 < rnaSequence.length()) {
+                    rnaSequenceBuilder.append(" ");
+                }
+            }
+
+            rnaSequenceTextArea.setText(rnaSequenceBuilder.toString());
         }
     }
 

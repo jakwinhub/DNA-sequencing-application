@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.NoSuchElementException;
 
 /**
  * GUI class for the application.
@@ -48,6 +49,7 @@ public class DNAAnalyzerPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == analyzeButton) {
             outputArea.setText("File Analysis Started ... ");
+            analyzeButton.setEnabled(false);
             new Thread(() -> {
                 try {
                     Thread.sleep(3000);
@@ -56,6 +58,9 @@ public class DNAAnalyzerPanel extends JPanel implements ActionListener {
                 } catch (InterruptedException interruptedException) {
                     interruptedException.printStackTrace();
                     SwingUtilities.invokeLater(() -> outputArea.setText("Analysis interrupted."));
+                } catch (NoSuchElementException noSuchElementException) {
+                    SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(this, "Error during analysis process, due to a missing start codon! ", "No start codon Found", JOptionPane.ERROR_MESSAGE));
+                    outputArea.setText("Analysis aborted.");
                 } catch (Exception ex) {
                     ex.printStackTrace();
                     SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(this, "Error during analysis process.", "Error", JOptionPane.ERROR_MESSAGE));

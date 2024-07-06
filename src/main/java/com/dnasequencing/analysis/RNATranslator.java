@@ -2,9 +2,11 @@ package main.java.com.dnasequencing.analysis;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 /**
  * Class in which the translation of DNA is realized.
+ * Mandatory for the translation is a start-codon!
  */
 
 public class RNATranslator {
@@ -47,9 +49,21 @@ public class RNATranslator {
 
     public static String translateToProtein(String rnaSequence) {
         StringBuilder protein = new StringBuilder();
-        for (int i = 0; i < rnaSequence.length() - 2; i += 3) {
+
+        int startIndex = rnaSequence.indexOf("AUG");
+        if (startIndex == -1) {
+            throw new NoSuchElementException();
+        }
+
+        for (int i = startIndex; i < rnaSequence.length() - 2; i += 3) {
             String codon = rnaSequence.substring(i, i + 3);
-            protein.append(codonMap.getOrDefault(codon, "Unknown")).append(" ");
+            String aminoAcid = codonMap.getOrDefault(codon, "Unknown");
+
+            if (aminoAcid.equals("Stop")) {
+                break;
+            }
+
+            protein.append(aminoAcid).append(" ");
         }
         return protein.toString().trim();
     }

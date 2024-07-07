@@ -33,22 +33,6 @@ public class DNAAnalyzer {
         }
     }
 
-    public double calculateCContent() {
-        return NucleotideContentCalculator.calculateCContent(dnaSequence);
-    }
-
-    public double calculateGContent() {
-        return NucleotideContentCalculator.calculateGContent(dnaSequence);
-    }
-
-    public double calculateAContent() {
-        return NucleotideContentCalculator.calculateAContent(dnaSequence);
-    }
-
-    public double calculateTContent() {
-        return NucleotideContentCalculator.calculateTContent(dnaSequence);
-    }
-
     public String findCodonPosition(String codon) {
         return SequenceFinder.findCodonPosition(dnaSequence, codon);
     }

@@ -1,9 +1,12 @@
 package main.java.com.dnasequencing.gui;
 
 import main.java.com.dnasequencing.analysis.DNAAnalyzer;
+import main.java.com.dnasequencing.analysis.DNANucleotideContentCalculator;
+import main.java.com.dnasequencing.analysis.RNANucleotideContentCalculator;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Map;
 
 public class NucleotideStatisticsPanel extends Panel implements StatisticsPanel {
     private final JTextArea nucleotideStatisticsTextArea;
@@ -22,22 +25,21 @@ public class NucleotideStatisticsPanel extends Panel implements StatisticsPanel 
     @Override
     public void updateData(DNAAnalyzer analyzer) {
         if (analyzer != null) {
-            double cContent = analyzer.calculateCContent();
-            double gContent = analyzer.calculateGContent();
-            double aContent = analyzer.calculateAContent();
-            double tContent = analyzer.calculateTContent();
+            DNANucleotideContentCalculator dnaCalculator = new DNANucleotideContentCalculator(analyzer);
+            Map<Character, Double> dnaProportions = dnaCalculator.calculateNucleotideContent();
 
-            nucleotideStatisticsTextArea.setText("\n *Statistics for Nucleotides in DNA* \n");
-            nucleotideStatisticsTextArea.append(" C content: " + cContent + "%\n");
-            nucleotideStatisticsTextArea.append(" G content: " + gContent + "%\n");
-            nucleotideStatisticsTextArea.append(" A content: " + aContent + "%\n");
-            nucleotideStatisticsTextArea.append(" T content: " + tContent + "%\n");
-            nucleotideStatisticsTextArea.append("\n *Statistics for Nucleotides in RNA* \n");
-            nucleotideStatisticsTextArea.append(" A content: " + tContent + "%\n");
-            nucleotideStatisticsTextArea.append(" U content: " + aContent + "%\n");
-            nucleotideStatisticsTextArea.append(" G content: " + cContent + "%\n");
-            nucleotideStatisticsTextArea.append(" C content: " + gContent + "%\n");
+            RNANucleotideContentCalculator rnaCalculator = new RNANucleotideContentCalculator(analyzer);
+            Map<Character, Double> rnaProportions = rnaCalculator.calculateNucleotideContent();
 
+            StringBuilder displayText = new StringBuilder(" Nucleotide Proportions in DNA Sequence:\n");
+            for (Map.Entry<Character, Double> entry : dnaProportions.entrySet()) {
+                displayText.append(entry.getKey()).append(": ").append(String.format("%.2f", entry.getValue())).append("%\n");
+            }
+            displayText.append("\n Nucleotide Proportions in coding RNA Sequence:\n");
+            for (Map.Entry<Character, Double> entry : rnaProportions.entrySet()) {
+                displayText.append(entry.getKey()).append(": ").append(String.format("%.2f", entry.getValue())).append("%\n");
+            }
+            nucleotideStatisticsTextArea.setText(displayText.toString());
         }
     }
 }

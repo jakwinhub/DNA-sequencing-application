@@ -1,6 +1,7 @@
 package main.java.com.dnasequencing.gui;
 
 import main.java.com.dnasequencing.analysis.DNAAnalyzer;
+import main.java.com.dnasequencing.analysis.DNATranscriber;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,7 +31,8 @@ public class RNAViewerPanel extends JPanel implements StatisticsPanel, ActionLis
     @Override
     public void actionPerformed(ActionEvent e) {
         if (analyzer != null) {
-            String rnaSequence = analyzer.transcribeToRna();
+            String dnaSequence = analyzer.getDnaSequence();
+            String rnaSequence = DNATranscriber.transcribeToRnaFromStartCodon(dnaSequence);
             StringBuilder rnaSequenceBuilder = new StringBuilder("RNA Sequence: " + "\n");
 
             for (int i = 0; i < rnaSequence.length(); i += 3) {

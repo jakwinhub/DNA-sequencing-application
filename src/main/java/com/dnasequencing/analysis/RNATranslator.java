@@ -1,5 +1,6 @@
 package main.java.com.dnasequencing.analysis;
 
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -52,6 +53,7 @@ public class RNATranslator {
 
         int startIndex = rnaSequence.indexOf("AUG");
         if (startIndex == -1) {
+
             throw new NoSuchElementException();
         }
 

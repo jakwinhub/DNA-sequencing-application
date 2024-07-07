@@ -1,22 +1,26 @@
 package main.java.com.dnasequencing.gui;
 
 import main.java.com.dnasequencing.Application;
+import main.java.com.dnasequencing.utils.LoggerUtils;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.NoSuchElementException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * GUI class for the application.
  */
 
 public class DNAAnalyzerPanel extends JPanel implements ActionListener {
-    private JTextArea outputArea;
-    private JButton loadFileButton;
-    private JButton analyzeButton;
-    private Application mainApp;
+    private static final Logger logger = LoggerUtils.getLogger();
+    private final JTextArea outputArea;
+    private final JButton loadFileButton;
+    private final JButton analyzeButton;
+    private final Application mainApp;
 
     public DNAAnalyzerPanel(Application mainApp) {
         this.mainApp = mainApp;
@@ -34,6 +38,7 @@ public class DNAAnalyzerPanel extends JPanel implements ActionListener {
             mainApp.loadFile();
             analyzeButton.setEnabled(true);
             outputArea.setText("File loaded. Ready for analysis.");
+            logger.info("File loaded successfully. Ready for analysis.");
         });
 
 
@@ -48,23 +53,26 @@ public class DNAAnalyzerPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == analyzeButton) {
-            outputArea.setText("File Analysis Started ... ");
+            outputArea.setText("    File Analysis Started ... \n");
+            logger.info("File Analysis Started ... \n");
             analyzeButton.setEnabled(false);
             new Thread(() -> {
                 try {
                     Thread.sleep(3000);
                     mainApp.updateStatisticsPanels();
-                    SwingUtilities.invokeLater(() -> outputArea.setText("Analysis Completed."));
+                    SwingUtilities.invokeLater(() -> outputArea.setText("   Analysis Completed. \n"));
+                    logger.info("Analysis Completed ... \n");
                 } catch (InterruptedException interruptedException) {
-                    interruptedException.printStackTrace();
-                    SwingUtilities.invokeLater(() -> outputArea.setText("Analysis interrupted."));
+                    SwingUtilities.invokeLater(() -> outputArea.setText("   Analysis interrupted. \n"));
+                    logger.log(Level.SEVERE, "Analysis interrupted.", interruptedException);
                 } catch (NoSuchElementException noSuchElementException) {
                     SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(this, "Error during analysis process, due to a missing start codon! ", "No start codon Found", JOptionPane.ERROR_MESSAGE));
-                    outputArea.setText("Analysis aborted.");
+                    outputArea.setText("    Analysis aborted. \n Please select a new file or check for Conventions.");
+                    logger.log(Level.SEVERE, "Error during analysis process, due to a missing start codon.", noSuchElementException);
                 } catch (Exception ex) {
-                    ex.printStackTrace();
                     SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(this, "Error during analysis process.", "Error", JOptionPane.ERROR_MESSAGE));
-                    outputArea.setText("Analysis interrupted.");
+                    outputArea.setText("    Analysis interrupted.");
+                    logger.log(Level.SEVERE, "Error during analysis process.", ex);
                 }
             }).start();
         }

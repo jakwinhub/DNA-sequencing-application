@@ -49,7 +49,7 @@ public class ProteinStatisticsPanel extends JPanel implements StatisticsPanel {
     @Override
     public void updateData(DNAAnalyzer analyzer) {
         if (analyzer != null) {
-            String rna = analyzer.transcribeToRna();
+            String rna = analyzer.transcribeToRnaFromStartCodon();
             String proteinSequence = RNATranslator.translateToProtein(rna);
 
             // Initialize counts for each protein

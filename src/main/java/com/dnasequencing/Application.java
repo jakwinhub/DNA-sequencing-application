@@ -3,9 +3,11 @@ package main.java.com.dnasequencing;
 import main.java.com.dnasequencing.analysis.DNAAnalyzer;
 import main.java.com.dnasequencing.gui.*;
 import main.java.com.dnasequencing.utils.FileLoader;
+import main.java.com.dnasequencing.utils.LoggerUtils;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.logging.Logger;
 
 /**
  * The main class that starts the program.
@@ -13,6 +15,7 @@ import java.awt.*;
  */
 
 public class Application {
+    private static final Logger logger = LoggerUtils.getLogger();
     private DNAAnalyzer analyzer;
     private JTabbedPane tabbedPane;
 
@@ -44,12 +47,15 @@ public class Application {
 
         frame.add(tabbedPane, BorderLayout.CENTER);
         frame.setVisible(true);
+        logger.info("GUI started and displayed.");
     }
 
     // Execute the loadFile method, which references FileLoader and loads the data into a string.
     public void loadFile() {
+        logger.info("Loading file...");
         FileLoader fileLoader = new FileLoader();
         analyzer = fileLoader.loadFile();
+        logger.info("File loaded successfully.");
     }
 
 
@@ -58,6 +64,7 @@ public class Application {
         for (Component component : tabbedPane.getComponents()) {
             if (component instanceof StatisticsPanel) {
                 ((StatisticsPanel) component).updateData(analyzer);
+                logger.info("Statistics panel updated to " + component);
             }
         }
     }

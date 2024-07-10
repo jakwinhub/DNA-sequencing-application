@@ -1,20 +1,44 @@
 package main.java.com.dnasequencing.analysis;
 
+// usage of external Libraries.
+
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Class in which the proportion of guanine and cytosine in the genome is to be calculated.
- * Addition: Proportion of Adenine and Thymine is also calculated, following the same schema as CG-Calculation.
- */
+// DNANucleotideContentCalculator is responsible for the Calculation of the proportion
+// for each nucleotide (Adenine, Thymine, Cytosine, and Guanine) in a DNA sequence.
 
 public class DNANucleotideContentCalculator {
     private final DNAAnalyzer analyzer;
 
+    /**
+     * Initializing the DNAAnalyzer as analyzer.
+     *
+     * @param analyzer initialized as DNAAnalyzer.
+     */
     public DNANucleotideContentCalculator(DNAAnalyzer analyzer) {
         this.analyzer = analyzer;
     }
 
+    /**
+     * Main function:
+     * Calculating the proportion of each nucleotide in the DNA Sequence.
+     * <p>
+     * Process:
+     * Retrieving DNA-Sequence from DNAAnalyzer.
+     * Initializing counter for each nucleotide.
+     * Iterating through DNA-Sequence and incrementing the corresponding counter for each nucleotide.
+     * Calculation the number of nucleotides in the DNASequence String.
+     * Creating a Hash-Map to store the proportion of each nucleotide.
+     * Calculation the proportion of each nucleotide by dividing count by total amount of nucleotides in DNA-Sequence and multiplying by 100 --> percentage.
+     * Proportion getting put into HashMap as Key-value.
+     * <p>
+     * Usage of switch-case:
+     * Handling of each nucleotide character.
+     * Default for unusual characters. --> shouldn't be in usage due to DNA-Utils requirements.
+     *
+     * @return nucleotideProportions as map with result of content Calculation.
+     */
     public Map<Character, Double> calculateNucleotideContent() {
         String dnaSequence = analyzer.getDnaSequence();
 

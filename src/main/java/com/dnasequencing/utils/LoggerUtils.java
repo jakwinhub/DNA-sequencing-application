@@ -1,12 +1,16 @@
 package main.java.com.dnasequencing.utils;
 
+// usage of external libraries.
+
 import java.io.IOException;
 import java.util.logging.*;
 
+// LoggerUtils provides a utility for logging events in the application.
 public class LoggerUtils {
     private static final Logger logger = Logger.getLogger(LoggerUtils.class.getName());
     private static FileHandler fileHandler;
 
+    // configures the logger when the class is loaded.
     static {
         try {
             // Configure the logger with a handler and formatter
@@ -27,6 +31,10 @@ public class LoggerUtils {
         }
     }
 
+    /**
+     * Returns the configured logger instance.
+     * @return logger instance.
+     */
     public static Logger getLogger() {
         return logger;
     }

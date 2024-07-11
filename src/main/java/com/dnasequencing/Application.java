@@ -1,30 +1,34 @@
 package main.java.com.dnasequencing;
 
+// usage of own classes.
+
 import main.java.com.dnasequencing.analysis.DNAAnalyzer;
 import main.java.com.dnasequencing.gui.*;
 import main.java.com.dnasequencing.utils.FileLoader;
 import main.java.com.dnasequencing.utils.LoggerUtils;
 
+// usage of external libraries.
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.logging.Logger;
 
-/**
- * The main class that starts the program.
- * Contains settings for panel (size and close-Operation).
- */
-
+// Application is the main class that starts the program and is responsible for creating and displaying the GUI.
 public class Application {
     private static final Logger logger = LoggerUtils.getLogger();
     private DNAAnalyzer analyzer;
     private JTabbedPane tabbedPane;
 
+    /**
+     * Entry point of the program.
+     *
+     * @param args default.
+     */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new Application().createAndShowGUI());
     }
 
-
-     // Method, which is responsible for the creation and subsequent display of the GUI.
+     // Responsible for the creation and subsequent display of the GUI.
      // All panels created and formatted in external classes are called up in this method.
     private void createAndShowGUI() {
         JFrame frame = new JFrame("DNA Analyzer");
@@ -50,7 +54,7 @@ public class Application {
         logger.info("GUI started and displayed.");
     }
 
-    // Execute the loadFile method, which references FileLoader and loads the data into a string.
+    // Execute the loadFile method, referring to FileLoader loading data to String, initialising the DNAAnalyzer instance.
     public void loadFile() {
         logger.info("Loading file...");
         FileLoader fileLoader = new FileLoader();
@@ -59,7 +63,7 @@ public class Application {
     }
 
 
-    // Method which is responsible for updating the statisticsPanel
+    // Responsible for updating the statisticsPanel by iterating over the components of JTabbedPane passing the DNAAnalyzer instance.
     public void updateStatisticsPanels() {
         for (Component component : tabbedPane.getComponents()) {
             if (component instanceof StatisticsPanel) {

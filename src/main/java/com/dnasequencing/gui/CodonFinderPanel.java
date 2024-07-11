@@ -1,6 +1,10 @@
 package main.java.com.dnasequencing.gui;
 
+// usage of own classes.
+
 import main.java.com.dnasequencing.analysis.DNAAnalyzer;
+
+// usage of external Libraries.
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,9 +12,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.regex.Pattern;
 
-/**
- * Class of the CodonFinderPanel. The panel is formatted and supplied with logic in this class
- */
+// CodonFinderPanel is a GUI component that allows users to input a codon and find its position in the DNA Sequence.
+// Implementation of StatisticsPanel and ActionListener.
 
 public class CodonFinderPanel extends JPanel implements StatisticsPanel, ActionListener {
     private final JTextArea codonFinderTextArea;
@@ -18,7 +21,7 @@ public class CodonFinderPanel extends JPanel implements StatisticsPanel, ActionL
     private final JButton findCodonButton;
     private DNAAnalyzer analyzer;
 
-
+    // Formatting of the Panel.
     public CodonFinderPanel() {
         codonFinderTextArea = new JTextArea();
         codonFinderTextArea.setEditable(false);
@@ -40,6 +43,7 @@ public class CodonFinderPanel extends JPanel implements StatisticsPanel, ActionL
 
     /**
      * Updating the data that was previously available and can now be changed by executing the class.
+     *
      * @param analyzer the DNA analyzer with the loaded data
      */
     @Override
@@ -49,8 +53,13 @@ public class CodonFinderPanel extends JPanel implements StatisticsPanel, ActionL
 
 
     /**
-     * Updating the GUI which can be given a different appearance by executing the methods of this class.
-     * @param e the event to be processed.
+     * Process:
+     * Retrieves the input codon from the input field, trims and converts it to uppercase.
+     * Checks if the codon is valid, using isValidCodon().
+     * If valid, calling the findCodonPosition() to find the position of the codon.
+     * Updating the codonFinderTextArea.
+     *
+     * @param e Method is called when the 'findCodonButton' is clicked.
      */
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -68,7 +77,8 @@ public class CodonFinderPanel extends JPanel implements StatisticsPanel, ActionL
 
     /**
      * Validates the input of the user, if the codon is in the correct format.
-     * Otherwise, the User gets a Message from void ActionPerformed.
+     * Otherwise, the User gets a ErrorMessage from void ActionPerformed.
+     *
      * @param codon the codon from the user-input.
      * @return true if codon is valid (matches out pattern), false otherwise.
      */

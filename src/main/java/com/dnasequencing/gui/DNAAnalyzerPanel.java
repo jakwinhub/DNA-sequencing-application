@@ -1,7 +1,11 @@
 package main.java.com.dnasequencing.gui;
 
+// usage of own classes.
+
 import main.java.com.dnasequencing.Application;
 import main.java.com.dnasequencing.utils.LoggerUtils;
+
+// usage of external Libraries.
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,9 +15,9 @@ import java.util.NoSuchElementException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- * GUI class for the application.
- */
+
+// DNAAnalyzerPanel is a GUI component that allows users to read a file and analyze the DNA Sequence.
+// Implementation of StatisticsPanel and ActionListener.
 
 public class DNAAnalyzerPanel extends JPanel implements ActionListener {
     private static final Logger logger = LoggerUtils.getLogger();
@@ -21,6 +25,8 @@ public class DNAAnalyzerPanel extends JPanel implements ActionListener {
     private final JButton loadFileButton;
     private final JButton analyzeButton;
     private final Application mainApp;
+
+    // Formatting of the DNAAnalyzerPanel.
 
     public DNAAnalyzerPanel(Application mainApp) {
         this.mainApp = mainApp;
@@ -50,6 +56,32 @@ public class DNAAnalyzerPanel extends JPanel implements ActionListener {
         this.add(new JScrollPane(outputArea), BorderLayout.CENTER);
     }
 
+    /**
+     * LoadFileButton action:
+     * Calling the loadFile method in the mainApp to load a file.
+     * Enabling the 'analyzeButton'.
+     * Updating the outputArea with a success message.
+     * Logging an info message.
+     * <p>
+     * AnalyzeButton action:
+     * Updating the outputArea with a message indicating that the analysis has started.
+     * Logging an info.
+     * Disabling the 'analyzeButton'.
+     * Starting a new thread to perform the process.
+     * <p>
+     * Analysis Thread:
+     * Sleeps for 3 seconds.
+     * Calling the updateStatisticsPanels() to update the statistics panels.
+     * Updating the outputArea with a message using SwingUtilities.
+     * Logging an info Message.
+     * <p>
+     * Error Handling:
+     * InterruptException is logging an error message and updating the outputArea with an error message.
+     * NoSuchElementException is logging an error message, showing the error dialog and updating the outputArea with an error message.
+     * Exception logs an error message, shows an error dialog and updates the outputArea with an error message.
+     *
+     * @param e Method is called when the 'findCodonButton' is clicked.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == analyzeButton) {

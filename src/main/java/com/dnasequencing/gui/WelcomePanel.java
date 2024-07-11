@@ -1,14 +1,15 @@
 package main.java.com.dnasequencing.gui;
 
+// usage of external libraries.
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class WelcomePanel extends JPanel implements ActionListener {
+// WelcomePanel is a GUI component that displays a welcome message and instruction for using the Application.
+public class WelcomePanel extends JPanel{
     private final JTextArea welcomeTextArea;
 
-
+    // Initializing the GUI components.
     public WelcomePanel() {
         setLayout(new BorderLayout());
         JLabel label = new JLabel(" Welcome to my DNA Sequencing Application ");
@@ -44,10 +45,5 @@ public class WelcomePanel extends JPanel implements ActionListener {
 
         add(label, BorderLayout.NORTH);
         add(welcomeTextArea, BorderLayout.CENTER);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
     }
 }

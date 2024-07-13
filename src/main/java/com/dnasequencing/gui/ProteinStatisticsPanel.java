@@ -39,8 +39,8 @@ public class ProteinStatisticsPanel extends JPanel implements StatisticsPanel {
     /**
      * Creating a bar chart by using the CharFactory and configuration of it.
      * Set the char-title, x-axis label and y-axis label.
-     * Creating a CategoryPlot and set the render to a BarRenderer.
-     * Configures the renderer to have a maximum bar width of 0.1.
+     * Create a CategoryPlot and set the render to a BarRenderer.
+     * Configure the renderer to have a maximum bar width of 0.1.
      * Rotates the category labels (protein-names) to 90 degrees.
      *
      * @param proteinDataset accumulation of all Protein counts.

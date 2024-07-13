@@ -12,11 +12,10 @@ public class WelcomePanel extends JPanel{
     // Initializing the GUI components.
     public WelcomePanel() {
         setLayout(new BorderLayout());
-        JLabel label = new JLabel(" Welcome to my DNA Sequencing Application ");
+        JLabel label = new JLabel(" Jakob's DNA-Analyse Tool ");
         label.setHorizontalAlignment(SwingConstants.CENTER);
 
         welcomeTextArea = new JTextArea("""
-                   Herzlich Willkommen bei meinem DNA-Analyse Tool.
                 
                    Um dieses Tool zu benutzen bitte ich folgendes zu beachten:
                    - Das Eingabeformat welches akzeptiert wird ist nur auf .txt Dateien beschränkt.
@@ -34,11 +33,9 @@ public class WelcomePanel extends JPanel{
 
 
                    To be considered:
-                   In the DNA analysis process, the process of DNA transcription is greatly simplified.\s
-                   Normally, a promoter must be found within the DNA strand to initiate transcription.
-                   This was omitted for the time being in order to use the project for any sequence.
+                   - Der Prozess der Proteinbiosynthese ist stark verenifacht.
+                   - Das Herausschneiden der Introns (nicht codierdener Teil) wurde übergangen um die Komplexität etwas geringer zu halten.
                
-                   The RNA processing step was also omitted for the sake of simplicity.\s
                 """);
         welcomeTextArea.setEditable(false);
         welcomeTextArea.setLineWrap(true);
